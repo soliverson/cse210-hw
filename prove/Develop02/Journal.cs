@@ -1,55 +1,28 @@
-public class Journal 
+using System.Collections.Generic;
+
+namespace Develop02
 {
-    public List<Entry>  _entries = new List<Entry>();
-
-    public void AddEntry(Entry newEntry)
-    {
-        _entries.Add(newEntry);
-    }
-
-    public void DisplayAll()
-    {
-        foreach (Entry promp in _entries) 
+    /// <summary>
+    /// The responsibility of a Journal is to hold entries.
+    /// </summary>
+    public class Journal
+    {        
+        public List<Entry> entries;
+        public Journal()
         {
-            promp.Display();
+            entries = new List<Entry>();
         }
-    }
-
-    public void SaveToFile(List<Entry> _entries) 
-    
-    {
-        Console.WriteLine("What is the filename? ");
-        string filename = Console.ReadLine();
-        using (StreamWriter outputFile = new StreamWriter(filename)) 
+        public List<Entry> GetEntries()
         {
-           foreach (Entry p in _entries) 
-           {
-
-                outputFile.WriteLine($"{p._date},{p._promptText},{p._entryText}");
-           }
-           
-          
+            return entries;
         }
-    }
+        public void StoreEntry(Entry entry)
+        {
+            if (!entries.Contains(entry))
+            {
+                entries.Add(entry);
+            }
+        }
 
-    public List<Entry> LoadFromFile(string file)
-    {
-       string[] lines = System.IO.File.ReadAllLines(file);
-       List<Entry> newData = new List<Entry>();
-
-       foreach (string line in lines)
-       {
-            string[] parts = line.Split(",");
-
-            Entry data = new Entry();
-            data._date = parts[0];
-            data._promptText = parts[1];
-            data._entryText = parts[2];
-
-           
-            newData.Add(data); 
-       }
-
-       return newData;
     }
 }

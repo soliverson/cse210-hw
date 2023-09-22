@@ -1,73 +1,83 @@
 using System;
-using System.IO;
 using System.Collections.Generic;
-using System.Net.Mail;
-namespace WindowsApplication1;
 
-class Program
+
+namespace Develop02
 {
-    static void Main(string[] args)
-    
+
+    class Program
     {
-        
-        PromptGenerator gen1 = new PromptGenerator();
-        gen1._prompts.Add("What was the most exciting part of your day?");
-        gen1._prompts.Add("Who did you talk with today?");
-        gen1._prompts.Add("How can you make tomorrow a better day?");
-        gen1._prompts.Add("What teaching moments can you take from today?");
-        gen1._prompts.Add("What was something funny that happened today?");
-
-        Journal daily = new Journal();
-
-        string choice = "";
-
-        do 
+        static void Main(string[] args)
         {
-            Console.WriteLine("Please select one of the following choices: ");
-            List<string> options = new List<string> {"1.Write", "2.Display", "3.Load", "4.Save", "5.Quit"};
-            foreach (string option in options) 
+           // provide a menu to the user to choose between writing and entry, displaying the entries, saving the entries, and loading the entries and a quit option.
+            Journal journal = new Journal();
+            File file = new File();
+            bool loop = true;
+            while (loop)
             {
-                Console.WriteLine(option);
+            Console.WriteLine("Welcome to your journal.");
+            Console.WriteLine("What would you like to do?");
+            Console.WriteLine("1. Write an entry");
+            Console.WriteLine("2. Display Journal");
+            Console.WriteLine("3. Save Journal");
+            Console.WriteLine("4. Load Journal");
+            Console.WriteLine("5. Quit");
+            string choice = Console.ReadLine();
+            if (choice == "1")
+            {
+                Entry entry = new Entry();
+                Console.WriteLine("What is the date?(MM/DD/YYYY)");
+                string date = Console.ReadLine();
+                entry.StoreDate(date);
+                int promptNum = new Random().Next(0, 5);
+                Console.WriteLine($"{entry.prompts[promptNum]}");
+                string response = Console.ReadLine();
+                entry.StoreResponse(response);
+                journal.StoreEntry(entry);
             }
-
-                choice = Console.ReadLine();
-
-            if (choice == "1") 
-            {
-
-                DateTime current = DateTime.Now;
-                Entry ent1 = new Entry();
-                ent1._promptText = gen1.GetRandomPrompt();
-                ent1._date = current.ToShortDateString();
-
-
-                Console.Write(ent1._promptText);
-                ent1._entryText = Console.ReadLine();               
-                daily._entries.Add(ent1);
-
-            } 
             else if (choice == "2")
             {
-                daily.DisplayAll();
+                List<Entry> entries2 = journal.GetEntries();
+                foreach (Entry entry in entries2)
+                {
+                    string message 
+                        = $"{entry.GetDate()}\n{entry.GetPrompt()}\n{entry.GetResponse()}\n";
+                    Console.WriteLine(message);
+                }
             }
-
             else if (choice == "3")
             {
-                Console.WriteLine("What is the filename?");
-                string name = Console.ReadLine();
-
-                daily._entries = daily.LoadFromFile(name);         
-                
-                
-            } else if (choice == "4")
-            
+                file.SaveJournal(journal);
+            }
+            else if (choice == "4")
             {
-                daily.SaveToFile(daily._entries);   
+                journal = file.LoadJournal();
+            }
+            else if (choice == "5")
+            {
+                Console.WriteLine("Goodbye.");
+                loop = false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid choice.");
+            }
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+           
+    
             }
 
-                        
-        } while (choice != "5");
-        
-    
+
+
+        }
     }
 }
