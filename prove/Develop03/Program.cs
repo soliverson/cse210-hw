@@ -8,16 +8,14 @@ class Program
         Console.Clear();
 
         Console.WriteLine($"Please Your preference from the list of scriptures below:");
-        Console.Write("1. Genesis 1:3-6  \n2. Proverbs 3:3\nEnter your choice here: ");
+        Console.Write("1. Proverbs 3:5-6  \n2. Proverbs 3:3\nEnter your choice here: ");
         string input = Console.ReadLine();
         int choice = int.Parse(input);
 
         if (choice == 1)
         {
-            Reference f1 = new Reference("Genesis", 1, 3, 6);
-            string scriptureText = ("In the beginning God created the heaven and the earth. And the earth was"+
-             "without form, and void; and darkness was upon the face of the deep. And the Spirit of God moved upon"+
-              "the face of the waters. And God said, Let there be light: and there was light.");
+            Reference f1 = new Reference("Proverbs", 5, 6);
+            string scriptureText = ("Trust in the Lord with all thine heart; and lean not unto thine own understanding.");
 
             Scripture scripture = new Scripture(f1, scriptureText);
             // Console.WriteLine( scripture.GetDisplayText());
