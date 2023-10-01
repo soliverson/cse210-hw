@@ -15,7 +15,7 @@ namespace Develop02
             bool loop = true;
             while (loop)
             {
-            Console.WriteLine("Welcome to your journal.");
+            Console.WriteLine("Hello and welcome to your journal.");
             Console.WriteLine("What would you like to do?");
             Console.WriteLine("1. Write an entry");
             Console.WriteLine("2. Display Journal");
