@@ -1,0 +1,13 @@
+0
+SimpleGoal:Run,Run 1 mile everyday to prepare for a race.,10,False
+EternalGoal:Scriptures,Read my scriptures once a day.,10
+ChecklistGoal:Homework,Make sure that I get my homework done and turned in on time.,10,5,10,1
+SimpleGoal:Run,Run 1 mile everyday to prepare for a race.,10,False
+EternalGoal:Scriptures,Read my scriptures once a day.,10
+ChecklistGoal:Homework,Make sure that I get my homework done and turned in on time.,10,5,10,1
+SimpleGoal:Run,Run 1 mile everyday to prepare for a race.,10,False
+EternalGoal:Scriptures,Read my scriptures once a day.,10
+ChecklistGoal:Homework,Make sure that I get my homework done and turned in on time.,10,5,10,1
+SimpleGoal:Run,Run 1 mile everyday to prepare for a race.,10,False
+EternalGoal:Scriptures,Read my scriptures once a day.,10
+ChecklistGoal:Homework,Make sure that I get my homework done and turned in on time.,10,5,10,0
